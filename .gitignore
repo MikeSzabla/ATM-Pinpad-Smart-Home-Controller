@@ -8,12 +8,16 @@ venv/
 .env
 .venv/
 
+# Secret files
+src/secrets.py
+
 # VS Code workspace settings
 .vscode/
 
 # Test / tooling caches
 .pytest_cache/
 pip-wheel-metadata/
+deploy.bat
 
 # Platform-specific
 .DS_Store

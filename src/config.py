@@ -1,0 +1,9 @@
+CLIENT_ID = "atm_pinpad"
+
+MQTT_TOPIC_STATUS = "atm_pinpad/status"
+MQTT_TOPIC_BUTTON = "atm_pinpad/button"
+
+BUTTON_MINUS_GPIO = 4
+
+WIFI_TIMEOUT_SECONDS = 15
+MQTT_TIMEOUT_SECONDS = 5
