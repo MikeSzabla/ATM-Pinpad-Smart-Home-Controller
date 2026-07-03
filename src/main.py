@@ -1,5 +1,8 @@
 from wifi import WiFiManager
 from mqtt_client import MQTTManager
+from keypad import Keypad
+
+import time
 
 wifi = WiFiManager()
 
@@ -19,7 +22,12 @@ mqtt.publish(
 
 print("Application started.")
 
-import time
+keypad = Keypad()
 
 while True:
-    time.sleep(1)
+
+    for button in keypad.update():
+        print(f"keypad.update() called from main: on Button {button}")
+        mqtt.publish("atm_pinpad/button", button)
+
+    time.sleep_ms(20)
