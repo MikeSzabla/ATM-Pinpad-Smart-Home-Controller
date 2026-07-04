@@ -18,6 +18,7 @@ src/secrets.py
 .pytest_cache/
 pip-wheel-metadata/
 deploy.bat
+temp_main.py
 
 # Platform-specific
 .DS_Store
