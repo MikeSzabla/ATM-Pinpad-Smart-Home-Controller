@@ -27,7 +27,6 @@ simulator = SerialKeypadSimulator(keypad)
 while True:
 
     simulator.update()
-    mqtt.update()
     events = keypad.update()
 
     time.sleep_ms(20)
