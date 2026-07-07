@@ -27,3 +27,6 @@ Thumbs.db
 # MicroPython / ESP32 build artifacts
 build/
 *.mpy
+
+# MD ai assist files
+MDs/

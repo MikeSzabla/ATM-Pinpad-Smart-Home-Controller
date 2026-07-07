@@ -1,4 +1,6 @@
 from umqtt.robust import MQTTClient
+from config import CLIENT_ID
+from app.infra.logger import info, error
 
 from secrets import (
     MQTT_BROKER,
@@ -6,11 +8,6 @@ from secrets import (
     MQTT_USER,
     MQTT_PASSWORD,
 )
-
-from config import CLIENT_ID
-
-from logger import info, error
-
 
 class MQTTManager:
 

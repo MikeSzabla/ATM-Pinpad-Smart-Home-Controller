@@ -1,33 +1,33 @@
-from wifi import WiFiManager
-from mqtt_client import MQTTManager
-from keypad import Keypad
+from app.comms.wifi import WiFiManager
+from app.comms.mqtt_client import MQTTManager
+from app.input.keypad import Keypad
+from app.input.input_simulator import SerialKeypadSimulator
+from app.infra.logger import info, error
+from app.config import MQTT_TOPIC_STATUS
 
 import time
 
 wifi = WiFiManager()
 
 if not wifi.connect():
-    raise RuntimeError("WiFi connection failed")
+    error("WiFi connection failed")
 
 mqtt = MQTTManager()
 
 if not mqtt.connect():
-    raise RuntimeError("MQTT connection failed")
+    error("MQTT connection failed")
 
-mqtt.publish(
-    "atm_pinpad/status",
-    "online",
-    retain=True
-)
+mqtt.publish_json(MQTT_TOPIC_STATUS, {"state": "online"}, retain=True)
 
-print("Application started.")
+info("Application started.")
 
 keypad = Keypad()
+simulator = SerialKeypadSimulator(keypad)
 
 while True:
 
-    for button in keypad.update():
-        print(f"keypad.update() called from main: on Button {button}")
-        mqtt.publish("atm_pinpad/button", button)
+    simulator.update()
+    mqtt.update()
+    events = keypad.update()
 
     time.sleep_ms(20)

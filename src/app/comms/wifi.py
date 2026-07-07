@@ -1,9 +1,9 @@
 import network
 import time
 
-from logger import info, error
+from app.infra.logger import info, error
 from secrets import WIFI_SSID, WIFI_PASSWORD
-from config import WIFI_TIMEOUT_SECONDS
+from app.config import WIFI_TIMEOUT_SECONDS
 
 
 class WiFiManager:
@@ -12,7 +12,6 @@ class WiFiManager:
         self.wlan = network.WLAN(network.STA_IF)
 
     def connect(self):
-
         info("Starting Wi-Fi connection process.")
         self.wlan.active(True)
 
@@ -27,7 +26,6 @@ class WiFiManager:
         timeout = WIFI_TIMEOUT_SECONDS
 
         while timeout > 0:
-
             if self.wlan.isconnected():
                 info("WiFi connected.")
                 info(f"IP: {self.wlan.ifconfig()[0]}")
