@@ -19,6 +19,8 @@ src/secrets.py
 pip-wheel-metadata/
 deploy.bat
 temp_main.py
+temp_main_deploy.bat
+.micropico
 
 # Platform-specific
 .DS_Store

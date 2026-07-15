@@ -17,7 +17,7 @@ mqtt = MQTTManager()
 if not mqtt.connect():
     error("MQTT connection failed")
 
-mqtt.publish_json(MQTT_TOPIC_STATUS, {"state": "online"}, retain=True)
+mqtt.publish(MQTT_TOPIC_STATUS, {"state": "online"}, retain=True)
 
 info("Application started.")
 
