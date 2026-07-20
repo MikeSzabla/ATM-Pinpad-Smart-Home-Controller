@@ -16,8 +16,6 @@ class Element:
     def draw_selected(self, display):
         raise NotImplementedError
     
-    def x_center(self, element_width):
-        return (DISPLAY_WIDTH-element_width*CHAR_WIDTH) // 2
 
 # Text Element
 class TextElement(Element):
@@ -49,3 +47,7 @@ class Cursor:
         self.prev.draw(display)
         self.cur.draw_selected(display)
         display.show()
+
+
+def x_center(element_width):
+        return (DISPLAY_WIDTH-element_width*CHAR_WIDTH) // 2
