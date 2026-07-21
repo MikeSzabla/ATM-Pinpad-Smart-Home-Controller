@@ -2,7 +2,8 @@ from app.comms.wifi import WiFiManager
 from app.comms.mqtt_client import MQTTManager
 from app.input.keypad import Keypad
 from app.input.input_simulator import SerialKeypadSimulator
-from app.ui import ScreenManager, RoomsScreen
+from app.ui.ScreenManager import ScreenManager
+from app.ui.Screens.Rooms import RoomsScreen
 from app.infra.logger import info, error
 from app.config import MQTT_TOPIC_STATUS
 

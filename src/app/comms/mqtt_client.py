@@ -1,5 +1,5 @@
 from umqtt.robust import MQTTClient
-from config import CLIENT_ID
+from app.config import CLIENT_ID
 from app.infra.logger import info, error
 
 from secrets import (
@@ -33,12 +33,7 @@ class MQTTManager:
             return False
 
     def publish(self, topic, payload, retain=False):
-
-        self.client.publish(
-            topic.encode(),
-            payload.encode(),
-            retain=retain
-        )
+        pass
 
     def disconnect(self):
         self.client.disconnect()
