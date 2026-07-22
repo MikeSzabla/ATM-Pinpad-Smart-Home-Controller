@@ -3,7 +3,7 @@ from app.comms.mqtt_client import MQTTManager
 from app.input.keypad import Keypad
 from app.input.input_simulator import SerialKeypadSimulator
 from app.ui.ScreenManager import ScreenManager
-from app.ui.Screens.Rooms import RoomsScreen
+from app.ui.Screens.RoomSelect import RoomSelectScreen
 from app.infra.logger import info, error
 from app.config import MQTT_TOPIC_STATUS
 
@@ -32,7 +32,7 @@ keypad = Keypad()
 simulator = SerialKeypadSimulator(keypad)
 
 # Load initial screen
-sm.switch_to(RoomsScreen)
+sm.switch_to(RoomSelectScreen)
 
 # Main event loop
 while True:

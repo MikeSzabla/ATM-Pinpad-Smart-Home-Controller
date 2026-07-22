@@ -18,8 +18,9 @@ src/secrets.py
 .pytest_cache/
 pip-wheel-metadata/
 deploy.bat
-# temp_main.py
-# temp_main_deploy.bat
+clear_app.py
+temp_main.py
+temp_main_deploy.bat
 .micropico
 
 # Platform-specific
