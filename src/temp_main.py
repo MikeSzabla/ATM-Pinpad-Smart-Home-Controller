@@ -21,57 +21,9 @@ display = SSD1306_I2C(
 def x_center(element_width):
     return (DISPLAY_WIDTH-element_width*CHAR_WIDTH) // 2
 
-class TextElement:
-    def __init__(self, text, x, y, selectable=False):
-        self.selectable = selectable
-        self.selected = False
-        self.text = text
-        self.text_len = len(text)
-        self.x = x
-        self.y = y
-        self.neighbors = {}
-        self.actions = {}
-    def draw_text(self, display):
-        display.fill_rect(0, self.y-1, 128, 9, 0)
-        display.text(self.text, self.x, self.y)
-    def draw_text_selected(self, display):
-        display.fill_rect(0, self.y-1, 128, 9, 1)
-        display.text(self.text, self.x, self.y, 0)
-
-
-class Cursor:
-    def __init__(self, element: TextElement):
-        self.cur = element
-        self.prev = None
-        self.cur.draw_text_selected(display)
-        display.show()
-    
-    def set(self, element: TextElement):
-        self.prev = self.cur
-        self.cur = element
-        self.prev.draw_text(display)
-        self.cur.draw_text_selected(display)
-        display.show()
-
-
-element_ok = TextElement("CURSOR TEST", x_center(11), 0)
-element_1 = TextElement("First Item", x_center(10), 15)
-element_2 = TextElement("Second Item", x_center(11), 30)
-element_3 = TextElement("Third Item", x_center(10), 45)
-
-element_list = [element_ok, element_1, element_2, element_3]
-for element in element_list:
-    element.draw_text(display)
-
-time.sleep(3)
-
-cursor = Cursor(element_ok)
-
-
-for i in range(len(element_list)):
-    cursor.set(element_list[i])
-    time.sleep(3)
-
+display.fill_rect(0,0,4*8+2,10,1)
+display.text("back", 1, 1, 0)
+display.show()
 
 # keypad = Keypad()
 # simulator = SerialKeypadSimulator(keypad)

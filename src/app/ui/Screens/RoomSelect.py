@@ -6,7 +6,7 @@ class RoomSelectScreen:
     """Screen for selecting a room in the home."""
     def __init__(self):
         """Initialize the room select screen with room elements and cursor."""
-        self.te_title = TextElement("ROOMS", x_center(5), 0, False)
+        self.te_title = TextElement("ROOMS", x_center(5), 1, False)
         self.te_dining_room = TextElement("Dining Room", x_center(11), 15, True)
         self.te_bedroom = TextElement("Bedroom", x_center(7), 30, True)
         self.te_hallway = TextElement("Hallway", x_center(7), 45, True)

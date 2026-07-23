@@ -57,7 +57,7 @@ class TextElement(Element):
         Args:
             display: Display object to render to
         """
-        display.fill_rect(0, self.y-1, 128, 9, 0)
+        display.fill_rect(self.x-1, self.y-1, self.text_len*8+2, 10, 0)
         display.text(self.text, self.x, self.y)
 
     def draw_selected(self, display):
@@ -67,7 +67,7 @@ class TextElement(Element):
             display: Display object to render to
         """
         if self.selectable:
-            display.fill_rect(0, self.y-1, 128, 9, 1)
+            display.fill_rect(self.x-1, self.y-1, self.text_len*8+2, 10, 1)
             display.text(self.text, self.x, self.y, 0)
 
 

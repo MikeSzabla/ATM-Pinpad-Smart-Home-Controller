@@ -8,21 +8,14 @@ class RoomScreen:
         """Initialize the room select screen with room elements and cursor."""
         self.te_title = TextElement(room_name, x_center(len(room_name)), 0, False)
 
-        self.te_dining_room.neighbors = {"8": self.te_bedroom}
-        self.te_bedroom.neighbors = {"2": self.te_dining_room, "8": self.te_hallway}
-        self.te_hallway.neighbors = {"2": self.te_bedroom}
-
         self.cursor = None
 
     def render(self):
         """Draw all room screen elements and initialize cursor."""
         self.te_title.draw(display)
-        self.te_dining_room.draw(display)
-        self.te_bedroom.draw(display)
-        self.te_hallway.draw(display)
         display.show()
 
-        self.cursor = Cursor(display, self.te_dining_room)
+        # self.cursor = Cursor(display, self.te_dining_room)
 
     def on_keypad_event(self, key):
         """Handle keypad input while this screen is active.
