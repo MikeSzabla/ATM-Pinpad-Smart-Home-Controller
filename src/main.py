@@ -1,5 +1,6 @@
 from app.comms.wifi import WiFiManager
-from app.comms.mqtt_client import MQTTManager
+from app.comms.MQTTManager import MQTTManager
+from app.comms.DeviceState import DeviceState
 from app.input.keypad import Keypad
 from app.input.input_simulator import SerialKeypadSimulator
 from app.ui.ScreenManager import ScreenManager
@@ -18,12 +19,10 @@ if not wifi.connect():
     error("WiFi connection failed")
 
 # Connect to MQTT broker
-mqtt = MQTTManager()
+ds = DeviceState()
+mqtt = MQTTManager(ds)
 if not mqtt.connect():
     error("MQTT connection failed")
-
-# Publish online status
-mqtt.publish(MQTT_TOPIC_STATUS, {"state": "online"}, retain=True)
 
 info("Application started.")
 
@@ -39,6 +38,7 @@ while True:
     # Poll for new keypad inputs
     simulator.update()
     events = keypad.update()
+    mqtt.client.check_msg()
 
     # Route keypad events to active screen
     for key in events:
